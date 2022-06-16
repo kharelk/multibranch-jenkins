@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://tomlutzenberger.github.io/meteocons.css/dist/meteocons.min.css" rel="stylesheet">
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+    <meta charset="UTF-8">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css'><link rel="stylesheet" href="./style.css">
+
+
+    <title>Weather App</title>
+    <link href= "{{ url_for('static',filename='styles/styles.css') }}" rel= "stylesheet" type= "text/css">
+</head>
+<body>
+
+ <div class="weather-widget">
+      <form action="/" method="post" class="temp-c row">
+        <input name="search" placeholder="Search.." type="text">
+        <input type="submit">
+      </form>
+      <a href="{{ url_for('download_file') }}">download</a>
+      <a href="{{ url_for('upload_file_to_dynamodb') }}" target="_blank">upload to dynamoDB</a>
+
+      <h1 class="location-country row">{{city}}, {{country}}</h1>
+      <h2 class="temp-c row">{{list_of_days[0]}}</h2>
+      <h4 class="weather-widget-h4 row">{{list_of_dates[0]}}</h4>
+      <h2 class="weather-widget-h2 row">{{concurrent_temp}}°</h2>
+      <img src="http://openweathermap.org/img/wn/{{list_of_icons[0]}}@2x.png" class="img-center" alt="weather icon" width="130" height="130">
+      <h4 class="weather-widget-h4 row">{{list_of_description[0]}}</h4>
+
+      <div class="weather-icon row">
+          <i class="mi mi-fw mi-lg mi-sun"></i>
+          <h2 class="row">{{list_of_temp_morning[0]}}°</h2>
+      </div>
+
+      <div class="weather-icon row">
+          <i class="mi mi-fw mi-lg mi-moon"></i>
+          <h2 class="row">{{list_of_temp_evening[0]}}°</h2>
+      </div>
+
+  </div>
+
+
+  <div class="weather-forecast">
+
+    {%for i in range(1, 8)%}
+      <div class="forecast-item">
+
+        <div class="day">
+            <div>
+                <h4>{{list_of_days[i]}}</h4>
+                <h6>{{list_of_dates[i]}}</h6>
+            </div>
+          <h5>day: {{list_of_temp_morning[i]}}° / night: {{list_of_temp_evening[i]}}°</h5>
+
+        </div>
+
+        <div class="forecast">
+          <img src="http://openweathermap.org/img/wn/{{list_of_icons[i]}}@2x.png" alt="weather icon" width="60" height="60">
+          <h6>{{list_of_description[i]}}</h6>
+          <h6>humidity: {{list_of_humidity[i]}}%</h6>
+
+        </div>
+
+      </div>
+    {%endfor%}
+
+  </div>
+
+</body>
+</html>
