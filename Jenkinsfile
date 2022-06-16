@@ -13,7 +13,14 @@ pipeline {
         sh "echo Hello"
       }
     }
-    
+    stage('cat README') {
+      when {
+        branch "bug_fix*"
+      }      
+      steps {
+        sh "cat README.md"
+      }
+    }    
     stage('Java version') {
       steps {
         sh '''
