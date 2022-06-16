@@ -22,6 +22,15 @@ pipeline {
         '''
       }
     }
+    
+    stage('cat README') {
+      when {
+        branch "bug_fix*"
+      }
+      steps {
+        sh "cat README.md"
+      }
+    }
 
     stage('merge fix to main') {
       when {
@@ -33,8 +42,6 @@ pipeline {
         sh 'git commit -am "Merged bug_fix_345 branch to main'
         sh "git push origin main"
       }
-
     }
   }
-
 }
