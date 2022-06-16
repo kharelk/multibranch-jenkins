@@ -28,7 +28,7 @@ pipeline {
         branch "main"
       }
       steps {
-        sh "mergin bug_fix to main"
+        sh "echo mergin bug_fix to main"
         sh 'git merge bug_fix_345 '
         sh 'git commit -am "Merged bug_fix_345 branch to main'
         sh "git push origin main"
