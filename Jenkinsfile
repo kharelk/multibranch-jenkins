@@ -38,7 +38,7 @@ pipeline {
       }
       steps {
         sh "echo mergin bug_fix to main"
-        sh 'git checkout main'
+        sh 'git checkout origin/main'
         sh 'git pull'
         sh 'git merge origin/bug_fix_345'
         sh 'git commit -am "Merged bug_fix_345 branch to main"'
