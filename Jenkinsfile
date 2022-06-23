@@ -37,7 +37,7 @@ pipeline {
         branch "main"
       }
       steps {
-        sh "pipeline is running on branch main"
+        sh "echo pipeline is running on branch main"
         // sh "echo mergin bug_fix to main"
         // sh 'git checkout origin/main'
         // sh 'git merge origin/bug_fix_345'
