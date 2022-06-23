@@ -37,11 +37,12 @@ pipeline {
         branch "main"
       }
       steps {
-        sh "echo mergin bug_fix to main"
-        sh 'git checkout origin/main'
-        sh 'git merge origin/bug_fix_345'
-        sh 'git commit -am "Merged bug_fix_345 branch to main"'
-        sh "git push origin main"
+        sh "pipeline is running on branch main"
+        // sh "echo mergin bug_fix to main"
+        // sh 'git checkout origin/main'
+        // sh 'git merge origin/bug_fix_345'
+        // sh 'git commit -am "Merged bug_fix_345 branch to main"'
+        // sh "git push origin main"
       }
     }
   }
